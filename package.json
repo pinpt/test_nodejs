@@ -16,7 +16,9 @@
   },
   "homepage": "https://github.com/pinpt/test_nodejs#readme",
   "dependencies": {
-    "ava": "^0.18.2",
     "express": "^4.15.2"
+  },
+  "devDepedencies": {
+    "ava": "^0.18.2"
   }
 }
