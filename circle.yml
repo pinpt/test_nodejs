@@ -1,8 +1,13 @@
-machine:
-  node:
-     version: 6
 dependencies:
-  override:
-    - yarn
   cache_directories:
-    - ~/.cache/yarn
+  - ~/.cache/yarn
+  override:
+  - yarn
+  pre:
+  - curl -s -L https://github.com/pinpt/sdk/releases/latest | egrep -o '/pinpt/sdk/releases/download/v(.*)/pinpt_Linux_x86_64.tar.gz'
+    | xargs printf "https://github.com%s" | xargs curl -L -s | tar xz
+machine:
+  environment:
+    PP_APIKEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdfaWQiOiIyNDQwMDUyNiIsInNjb3BlcyI6WyJzZGsiXSwiZXhwIjoxNjQ1MTM3MzU1LCJpYXQiOjE0ODk2MTczNTUsImlzcyI6InBpbnB0IiwibmJmIjoxNDg5NjE3MzU1LCJzdWIiOiJhcGlrZXkifQ.KvWWVNnnHkGTMZm4whJUSVhLNvI4ukPlTBGVSeJ6LW8
+  node:
+    version: 6
