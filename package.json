@@ -1,0 +1,22 @@
+{
+  "name": "test_nodejs",
+  "version": "1.0.0",
+  "description": "Test Node.JS Project",
+  "scripts": {
+    "test":"ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pinpt/test_nodejs.git"
+  },
+  "author": "Jeff Haynie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pinpt/test_nodejs/issues"
+  },
+  "homepage": "https://github.com/pinpt/test_nodejs#readme",
+  "dependencies": {
+    "ava": "^0.18.2",
+    "express": "^4.15.2"
+  }
+}
