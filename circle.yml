@@ -1,8 +1,22 @@
-machine:
-  node:
-     version: 6
 dependencies:
-  override:
-    - yarn
   cache_directories:
-    - ~/.cache/yarn
+  - ~/.cache/yarn
+  override:
+  - yarn
+  pre:
+  - curl -s -L https://github.com/pinpt/sdk/releases/latest | egrep -o '/pinpt/sdk/releases/download/v(.*)/pinpt_Linux_x86_64.tar.gz'
+    | xargs printf "https://github.com%s" | xargs curl -L -s | tar xz
+machine:
+  environment:
+    PP_APIKEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdfaWQiOiIyNDQwMDUyNiIsInNjb3BlcyI6WyJzZGsiXSwiZXhwIjoxNjQ1MTM1NjA2LCJpYXQiOjE0ODk2MTU2MDYsImlzcyI6InBpbnB0IiwibmJmIjoxNDg5NjE1NjA2LCJzdWIiOiJhcGlrZXkifQ.N18eEX0Gyf4isA_5yIgjgOK3bkzOvmNT00e7yzyEb0g
+    PP_COVERAGE_RESULTS: ${HOME}/${CIRCLE_PROJECT_REPONAME}/coverage/lcov.info
+    PP_TEST_RESULTS: ${HOME}/${CIRCLE_PROJECT_REPONAME}/test-results.json
+  node:
+    version: 6
+notify:
+  webhooks:
+  - url: https://local.webhook.ppoint.io:8444/webhook/circleci/b5418583c77998e5546a07dffa4956e8ff2a9814a1c6937ff770f460992397d8/85026034/24400526/build
+test:
+  post:
+  - ${HOME}/${CIRCLE_PROJECT_REPONAME}/pinpt test --cover-format lcov --format tap
+    --reason automated --apikey ${PP_APIKEY} ${PP_TEST_RESULTS} ${PP_COVERAGE_RESULTS}
