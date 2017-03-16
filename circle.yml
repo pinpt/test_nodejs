@@ -8,7 +8,7 @@ dependencies:
     | xargs printf "https://github.com%s" | xargs curl -L -s | tar xz
 machine:
   environment:
-    PP_APIKEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdfaWQiOiIyNDQwMDUyNiIsInNjb3BlcyI6WyJzZGsiXSwiZXhwIjoxNjQ1MjI1NTY1LCJpYXQiOjE0ODk3MDU1NjUsImlzcyI6InBpbnB0IiwibmJmIjoxNDg5NzA1NTY1LCJzdWIiOiJhcGlrZXkifQ.-y94TzoEVo45AjIzb8Hsd15LEVwc_kB174cmVoI_YAU
+    PP_APIKEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdfaWQiOiIyNDQwMDUyNiIsInNjb3BlcyI6WyJzZGsiXSwiZXhwIjoxNjQ1MjI2NzM4LCJpYXQiOjE0ODk3MDY3MzgsImlzcyI6InBpbnB0IiwibmJmIjoxNDg5NzA2NzM4LCJzdWIiOiJhcGlrZXkifQ.lrwWJuGogdyASVS4V0rXpLLZ_Peubc5RTybcNTVQtao
     PP_COVERAGE_RESULTS: ${HOME}/${CIRCLE_PROJECT_REPONAME}/coverage/lcov.info
     PP_TEST_RESULTS: ${HOME}/${CIRCLE_PROJECT_REPONAME}/test-results.json
   node:
